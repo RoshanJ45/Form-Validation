@@ -1,0 +1,81 @@
+<div class="form-container">
+  <h2>Form Validation</h2>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
+    }
+    .form-container {
+      width: 300px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px #eee;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <form id="myForm">
+    <label for="name">Enter Name:</label>
+    <input type="text" id="name" placeholder="Name">
+    <div id="error-message" class="error"></div>
+    <button type="submit">Submit</button>
+    <span id="result"></span>
+    <script>
+      const form = document.getElementById('myForm');
+      const nameInput = document.getElementById('name');
+      const errorMessage = document.getElementById('error-message');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const nameValue = nameInput.value.trim();
+        if (!nameValue) {
+          errorMessage.textContent = 'Name cannot be empty!';
+        } else if (nameValue.length < 3) {
+          errorMessage.textContent = 'Name must be at least 3 characters long!';
+        } else {
+          errorMessage.textContent = '';
+          document.getElementById("result").innerText = "Submitted successfully!";
+          form.reset();
+        }
+      });
+    </script>
+  </form>
+</div>
